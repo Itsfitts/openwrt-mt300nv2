@@ -29,9 +29,6 @@ jobs:
           needs: build
 
           steps:
-            - name: Set env for SHA
-              run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
-
             - name: Download the image artifacts
               uses: actions/download-artifact@v2
               with:
@@ -46,8 +43,8 @@ jobs:
             - name: Create a release
               uses: "marvinpinto/action-automatic-releases@latest"
               with:
-                repo_token: "${{ secrets.GITHUB_TOKEN }}"
+                repo_token: "${{ secrets.GIT_TOKEN }}"
                 prerelease: false
-                title: "OpenWRT PrivateRouter SHA ${{ env.GITHUB_SHA_SHORT }}"
-                automatic_release_tag: "OpenWRT-PrivateRouter-${{ env.GITHUB_SHA_SHORT }}"
+                title: "OpenWRT PrivateRouter"
+                automatic_release_tag: "OpenWRT-PrivateRouter"
                 files: images/*
