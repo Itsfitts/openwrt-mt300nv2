@@ -13,7 +13,7 @@ jobs:
             - name: Install build dependencies
               run: |
                 sudo apt-get update
-                sudo apt-get install -y python3.13
+                sudo apt-get install -y python3.10
 
             - name: Build target images
               run: |
